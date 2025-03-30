@@ -6,11 +6,12 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-image: url('https://44.media.tumblr.com/0b84629eb30c7317195ceca3b3e9b0e0/c9f77ad70618ad49-8a/s1280x1920_f1/ab7f9706eea3583c2b94989318a7f77e76fd8032.gif'); /* Replace with your Kanto image URL */
+  background-image: url('https://44.media.tumblr.com/0b84629eb30c7317195ceca3b3e9b0e0/c9f77ad70618ad49-8a/s1280x1920_f1/ab7f9706eea3583c2b94989318a7f77e76fd8032.gif'); /* Default Kanto image */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: #5b5959; /* Ensure text is readable on the background */
+  color: #5b5959;
+  transition: background-image 0.3s ease; /* Smooth transition when changing the background */
 }
 
 /* Main container for two-column layout */

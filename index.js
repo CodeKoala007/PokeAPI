@@ -7,6 +7,9 @@ async function fetchPokemon() {
     if (!response.ok) throw new Error('Pokémon not found');
     const data = await response.json();
 
+    const spriteUrl = data.sprites.other['official-artwork'].front_default; // Use official artwork
+    setBackgroundImage(spriteUrl); // Change the background to the Pokémon's sprite
+
     const imgElement = document.getElementById('pokemonSprite');
     imgElement.src = data.sprites.front_default;
     imgElement.style.display = 'block';
@@ -154,6 +157,10 @@ function showParty() {
   const showPartyButton = document.getElementById('showPartyButton');
   partyContainer.style.display = 'block';
   showPartyButton.style.display = 'none';
+}
+
+function setBackgroundImage(imageUrl) {
+  document.body.style.backgroundImage = `url('${imageUrl}')`;
 }
 
 fetchAllPokemon();
