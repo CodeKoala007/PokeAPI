@@ -1,4 +1,4 @@
-/* Center the content */
+
 body {
   display: flex;
   flex-direction: column;
@@ -7,13 +7,13 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff; /* Light blue background */
+  background-color: #f0f8ff; 
 }
 
 #pokemonContainer {
   display: flex;
   align-items: flex-start;
-  gap: 20px; /* Space between the sprite and details */
+  gap: 20px; 
   margin-top: 20px;
   background-color: white;
   border: 1px solid #ddd;
@@ -24,16 +24,15 @@ body {
 }
 
 #pokemonSprite {
-  max-width: 150px; /* Limit the sprite size */
-  border: 2px solid #ccc; /* Add a border for better visibility */
-  border-radius: 10px; /* Rounded corners */
+  max-width: 150px; 
+  border: 2px solid #ccc; 
+  border-radius: 10px; 
   padding: 5px;
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #f9f9f9; 
 }
 
-/* Add hover effect to the sprite */
 #pokemonSprite:hover {
-  transform: scale(1.1); /* Slightly enlarge the sprite */
+  transform: scale(1.1);
   transition: transform 0.3s;
 }
 
@@ -44,7 +43,6 @@ body {
   color: #333;
 }
 
-/* Style the header */
 #pageTitle {
   font-size: 32px;
   color: #333;
@@ -52,7 +50,6 @@ body {
   text-align: center;
 }
 
-/* Style the input field */
 #pokemonName {
   padding: 10px;
   font-size: 16px;
@@ -62,12 +59,11 @@ body {
   margin-right: 10px;
 }
 
-/* Style the button */
 button {
   padding: 10px 15px;
   font-size: 16px;
-  background-color: #4caf50; /* Green background */
-  color: white; /* White text */
+  background-color: #4caf50; 
+  color: white; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -75,5 +71,5 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049; 
 }
