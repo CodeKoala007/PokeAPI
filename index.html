@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokémon Finder</title>
+    <title>Pokémon Buscador</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -18,13 +18,16 @@
           <p id="pokemonDetails"></p>
           <button id="addToPartyButton" style="display: none" onclick="addToPartyFromSearch()">Add to Party</button>
         </div>
+        <button id="toggleAllPokemonButton" onclick="toggleAllPokemon()">Hide All Pokémon</button>
         <div id="allPokemonBanner">
           <h2>All Pokémon</h2>
           <div id="allPokemonList"></div>
         </div>
       </div>
+      <button id="showPartyButton" onclick="showParty()" style="display: none">Show Party</button>
       <div id="partyContainer">
         <h2>Your Party</h2>
+        <button id="togglePartyButton" onclick="hideParty()">Hide Party</button>
         <div id="party"></div>
       </div>
     </div>

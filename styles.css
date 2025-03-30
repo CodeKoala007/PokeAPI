@@ -6,7 +6,11 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
+  background-image: url('https://44.media.tumblr.com/0b84629eb30c7317195ceca3b3e9b0e0/c9f77ad70618ad49-8a/s1280x1920_f1/ab7f9706eea3583c2b94989318a7f77e76fd8032.gif'); /* Replace with your Kanto image URL */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #5b5959; /* Ensure text is readable on the background */
 }
 
 /* Main container for two-column layout */
@@ -31,18 +35,24 @@ body {
 #partyContainer {
   flex: 1;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #07a2838f;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 600px;
-  overflow-y: auto; /* Add scroll if the party exceeds the height */
+  overflow-y: auto;
+  transition: flex 0.3s ease; /* Smooth transition for hover effect */
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+#partyContainer:hover {
+  flex: 3; /* Expand the party container on hover */
 }
 
 #partyContainer h2 {
   font-size: 24px;
-  color: #333;
+  color: #f6f3f3;
   margin-bottom: 10px;
 }
 
@@ -64,6 +74,12 @@ body {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
+}
+
+.party-member p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: center;
 }
 
 .party-sprite {
@@ -111,7 +127,7 @@ body {
 
 #pageTitle {
   font-size: 32px;
-  color: #333;
+  color: #f8f1f1;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -140,7 +156,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Style the "Add to Party" button */
 #addToPartyButton {
   margin-top: 10px;
   padding: 10px 15px;
@@ -157,7 +172,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Style the "Remove" button */
 .remove-button {
   margin-top: 5px;
   padding: 5px 10px;
@@ -174,11 +188,10 @@ button:hover {
   background-color: #cc0000;
 }
 
-/* Style the all Pokémon banner */
 #allPokemonBanner {
   margin-top: 30px;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #07a2838f;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
@@ -187,7 +200,18 @@ button:hover {
   overflow-y: auto; /* Add scroll for large lists */
 }
 
-/* Style the Pokémon list */
+#allPokemonBanner,
+#partyContainer {
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+#allPokemonBanner h2 {
+  font-size: 24px;
+  color: #ffffff; /* Change to white for better contrast */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add a shadow for better readability */
+  margin-bottom: 10px;
+}
+
 #allPokemonList {
   display: flex;
   flex-wrap: wrap;
@@ -195,7 +219,6 @@ button:hover {
   gap: 10px;
 }
 
-/* Style individual Pokémon in the banner */
 .all-pokemon {
   display: flex;
   flex-direction: column;
@@ -207,8 +230,6 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100px;
 }
-
-/* Style the Pokémon sprites */
 .all-pokemon-sprite {
   max-width: 80px;
   margin-bottom: 5px;
