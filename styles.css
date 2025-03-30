@@ -1,0 +1,24 @@
+
+#pokemonContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Space between the sprite and details */
+  margin-top: 20px;
+}
+
+
+#pokemonSprite {
+  max-width: 150px; /* Limit the sprite size */
+  border: 2px solid #ccc; /* Add a border for better visibility */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+
+#pokemonDetails {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
