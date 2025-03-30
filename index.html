@@ -4,21 +4,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pokémon Finder</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1 id="pageTitle">Pokémon Buscador</h1>
-    <input type="text" id="pokemonName" placeholder="Enter Pokemon name" />
-    <button onclick="fetchPokemon()">Fetch Pokemon</button><br />
-    <div id="pokemonContainer">
-      <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none" />
-      <p id="pokemonDetails"></p>
-      <button id="addToPartyButton" style="display: none" onclick="addToPartyFromSearch()">Add to Party</button>
-    </div>
-    <div id="partyContainer">
-      <h2>Your Party</h2>
-      <div id="party"></div>
+    <div id="mainContainer">
+      <div id="content">
+        <h1 id="pageTitle">Pokémon Finder</h1>
+        <input type="text" id="pokemonName" placeholder="Enter Pokémon name" />
+        <button onclick="fetchPokemon()">Fetch Pokémon</button>
+        <div id="pokemonContainer">
+          <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none" />
+          <p id="pokemonDetails"></p>
+          <button id="addToPartyButton" style="display: none" onclick="addToPartyFromSearch()">Add to Party</button>
+        </div>
+        <div id="allPokemonBanner">
+          <h2>All Pokémon</h2>
+          <div id="allPokemonList"></div>
+        </div>
+      </div>
+      <div id="partyContainer">
+        <h2>Your Party</h2>
+        <div id="party"></div>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>

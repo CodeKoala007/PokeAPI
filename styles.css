@@ -9,6 +9,73 @@ body {
   background-color: #f0f8ff;
 }
 
+/* Main container for two-column layout */
+#mainContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Content section (left side) */
+#content {
+  flex: 3;
+  margin-right: 20px;
+}
+
+/* Party section (right side) */
+#partyContainer {
+  flex: 1;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+  overflow-y: auto; /* Add scroll if the party exceeds the height */
+}
+
+#partyContainer h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Style the party display */
+#party {
+  display: flex;
+  flex-direction: column; /* Display party members vertically */
+  gap: 10px;
+}
+
+/* Style individual party members */
+.party-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.party-sprite {
+  max-width: 80px;
+  margin-bottom: 5px;
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.party-sprite:hover {
+  transform: scale(1.2); /* Grow the sprite on hover */
+}
+
 #pokemonContainer {
   display: flex;
   align-items: flex-start;
@@ -31,7 +98,7 @@ body {
 }
 
 #pokemonSprite:hover {
-  transform: scale(1.1);
+  transform: scale(2.1);
   transition: transform 0.3s;
 }
 
@@ -107,40 +174,42 @@ button:hover {
   background-color: #cc0000;
 }
 
-/* Style the party container */
-#partyContainer {
+/* Style the all Pokémon banner */
+#allPokemonBanner {
   margin-top: 30px;
   text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+  overflow-y: auto; /* Add scroll for large lists */
 }
 
-#partyContainer h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-/* Style the party display */
-#party {
+/* Style the Pokémon list */
+#allPokemonList {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Style individual party members */
-.party-member {
+/* Style individual Pokémon in the banner */
+.all-pokemon {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100px;
 }
 
-.party-sprite {
+/* Style the Pokémon sprites */
+.all-pokemon-sprite {
   max-width: 80px;
   margin-bottom: 5px;
 }

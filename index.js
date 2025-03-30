@@ -1,98 +1,95 @@
-//pokeapi.co
-// https://pokeapi.co/api/v2/pokemon/pikachu
-
-let party = []; // Array to store party Pokémon
+let party = [];
 
 async function fetchPokemon() {
   try {
     const pokemonName = document.getElementById('pokemonName').value.toLowerCase();
-
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-    if (!response.ok) {
-      throw new Error('No se pudo encontrar el Pokémon. Por favor, verifica el nombre e intenta nuevamente.');
-    }
+    if (!response.ok) throw new Error('Pokémon not found');
     const data = await response.json();
-    const pokemonSprite = data.sprites.front_default;
     const imgElement = document.getElementById('pokemonSprite');
-    imgElement.src = pokemonSprite;
+    imgElement.src = data.sprites.front_default;
     imgElement.style.display = 'block';
     imgElement.alt = pokemonName;
-
-    const pokemonHeight = data.height;
-    const pokemonWeight = data.weight;
-    const pokemonTypes = data.types.map((typeInfo) => typeInfo.type.name).join(', ');
-    const pokemonAbilities = data.abilities.map((abilityInfo) => abilityInfo.ability.name).join(', ');
-
-    const detailsElement = document.getElementById('pokemonDetails');
-    detailsElement.innerHTML = `
-            <strong>Height:</strong> ${pokemonHeight} decimetres<br>
-            <strong>Weight:</strong> ${pokemonWeight} hectograms<br>
-            <strong>Types:</strong> ${pokemonTypes}<br>
-            <strong>Abilities:</strong> ${pokemonAbilities}
-        `;
-
-    // Show the "Add to Party" button
+    document.getElementById('pokemonDetails').innerHTML = `
+      <strong>Height:</strong> ${data.height} dm<br>
+      <strong>Weight:</strong> ${data.weight} hg<br>
+      <strong>Types:</strong> ${data.types.map((t) => t.type.name).join(', ')}<br>
+      <strong>Abilities:</strong> ${data.abilities.map((a) => a.ability.name).join(', ')}
+    `;
     const addToPartyButton = document.getElementById('addToPartyButton');
     addToPartyButton.style.display = 'block';
     addToPartyButton.dataset.name = pokemonName;
-    addToPartyButton.dataset.sprite = pokemonSprite;
+    addToPartyButton.dataset.sprite = data.sprites.front_default;
   } catch (error) {
-    console.error('Error:', error);
+    console.error(error);
   }
 }
 
-// Add Pokémon to the party from the search
 function addToPartyFromSearch() {
-  const addToPartyButton = document.getElementById('addToPartyButton');
-  const name = addToPartyButton.dataset.name;
-  const sprite = addToPartyButton.dataset.sprite;
-
-  addToParty(name, sprite);
+  const button = document.getElementById('addToPartyButton');
+  addToParty(button.dataset.name, button.dataset.sprite);
 }
 
 function addToParty(name, sprite) {
-  if (party.length >= 6) {
-    alert('Your party is full! You can only have up to 6 Pokémon.');
-    return;
-  }
-
-  // Add Pokémon to the party array
+  if (party.length >= 6) return alert('Party is full');
   party.push({ name, sprite });
-
-  // Update the party display
   updatePartyDisplay();
 }
 
 function updatePartyDisplay() {
   const partyContainer = document.getElementById('party');
-  partyContainer.innerHTML = ''; // Clear the current party display
-
+  partyContainer.innerHTML = '';
   party.forEach((pokemon, index) => {
-    const pokemonDiv = document.createElement('div');
-    pokemonDiv.classList.add('party-member');
-
+    const div = document.createElement('div');
+    div.classList.add('party-member');
     const img = document.createElement('img');
     img.src = pokemon.sprite;
     img.alt = pokemon.name;
     img.classList.add('party-sprite');
-
     const name = document.createElement('p');
     name.textContent = pokemon.name;
-
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
     removeButton.classList.add('remove-button');
     removeButton.onclick = () => removeFromParty(index);
-
-    pokemonDiv.appendChild(img);
-    pokemonDiv.appendChild(name);
-    pokemonDiv.appendChild(removeButton);
-    partyContainer.appendChild(pokemonDiv);
+    div.appendChild(img);
+    div.appendChild(name);
+    div.appendChild(removeButton);
+    partyContainer.appendChild(div);
   });
 }
 
-// Remove Pokémon from the party
 function removeFromParty(index) {
-  party.splice(index, 1); // Remove the Pokémon at the specified index
-  updatePartyDisplay(); // Update the party display
+  party.splice(index, 1);
+  updatePartyDisplay();
 }
+
+async function fetchAllPokemon() {
+  try {
+    const allPokemonList = document.getElementById('allPokemonList');
+    allPokemonList.innerHTML = '';
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+    if (!response.ok) throw new Error('Failed to fetch Pokémon');
+    const data = await response.json();
+    for (const pokemon of data.results) {
+      const detailsResponse = await fetch(pokemon.url);
+      if (!detailsResponse.ok) throw new Error(`Failed to fetch details for ${pokemon.name}`);
+      const details = await detailsResponse.json();
+      const div = document.createElement('div');
+      div.classList.add('all-pokemon');
+      const img = document.createElement('img');
+      img.src = details.sprites.front_default;
+      img.alt = pokemon.name;
+      img.classList.add('all-pokemon-sprite');
+      const name = document.createElement('p');
+      name.textContent = pokemon.name;
+      div.appendChild(img);
+      div.appendChild(name);
+      allPokemonList.appendChild(div);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchAllPokemon();
