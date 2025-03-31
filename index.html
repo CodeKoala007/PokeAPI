@@ -12,11 +12,11 @@
       <div id="content">
         <h1 id="pageTitle">Pokémon Finder</h1>
         <input type="text" id="pokemonName" placeholder="Enter Pokémon name" />
-        <button onclick="fetchPokemon()">Fetch Pokémon</button>
+        <button onclick="fetchPokemon()">Search Pokémon</button>
         <div id="pokemonContainer">
           <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none" />
           <p id="pokemonDetails"></p>
-          <button id="addToPartyButton" style="display: none" onclick="addToPartyFromSearch()">Add to Party</button>
+          <button id="addToPartyButton" style="display: none" onclick="addToPartyFromSearch()">Catch Pokemon</button>
         </div>
         <button id="toggleAllPokemonButton" onclick="toggleAllPokemon()">Hide All Pokémon</button>
         <div id="allPokemonBanner">
@@ -30,11 +30,6 @@
         <button id="togglePartyButton" onclick="hideParty()">Hide Party</button>
         <div id="party"></div>
       </div>
-      <button
-        onclick="setBackgroundImage('https://44.media.tumblr.com/0b84629eb30c7317195ceca3b3e9b0e0/c9f77ad70618ad49-8a/s1280x1920_f1/ab7f9706eea3583c2b94989318a7f77e76fd8032.gif')"
-      >
-        Reset Background
-      </button>
     </div>
     <script src="index.js"></script>
   </body>
